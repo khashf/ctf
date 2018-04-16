@@ -1,0 +1,84 @@
+/*My styling */
+
+h1{
+    margin: auto;
+    text-align: center;
+    font: 400 58px/60px 'Impact, Charcoal, sans-serif', Georgia, serif;
+    color:#e23636;
+    background-color: #504a4a;
+    text-shadow: 2px 2px #000000;
+    margin: 10px 0;
+  }
+  
+  body{
+    text-align: center;
+    background-image: url(http://hdqwalls.com/wallpapers/the-matrix-typography-wide.jpg);
+    margin:0px;
+    font: 400 12px/22px 'Open Sans', Verdana, Helvetica, sans-serif;
+    color:#000000;
+    background-color: #504a4a;
+  }
+  
+  .box
+  {
+    position: absolute;
+    width: auto;
+    height: auto;
+    left: 28%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f78f3f;
+    border: 5px solid #000000;
+    opacity:0.95;
+    display: inline;
+    float: center;
+    padding: 8px 20px;
+  }
+  
+  form{
+    margin: auto;
+    width:40%;
+    font-weight: bold;
+  }
+  
+  input[type=text], select {
+    width: 100%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 3px solid #000000;
+    border-radius: 4px
+    /* First half */
+    /* c2VhcmNoID0gIiIiU0VMRUNUIGlkLCBoYXNoLCBzYWx0IEZST00gY2xpZW50cyBXSEVSRSBjbGllbnRuYW1lID0gJ3swfScgTElNSVQgMSIiIi5mb3JtYXQoY2xpZW50bmFtZSkNCnBvaW50ZXIuZXhlY3V0ZShzZWFyY2gpDQoNCiByZXMgPSBwb2ludGVyLmZldGNob25lKCkNCiAgICBpZiBub3QgcmVzOg0KICAgICAgICByZXR1cm4gIk5vIHN1Y2ggdXNlciBpbiB0aGUgZGF0YWJhc2UgezB9IVxuIi5mb3JtYXQoY2xpZW50bmFtZSkNCiAgICB1c2VySUQsIGhhc2gsIHNhbHQgPSByZXMNCg== */
+  }
+  
+  
+  input[type=password], select {
+    width: 100%;
+    padding: 8px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 3px solid #000000;
+    border-radius: 4px;
+    /* Second Half */
+    /* Y2FsY3VsYXRlZEhhc2ggPSBoYXNobGliLnNoYTI1NihwYXNzd29yZCArIHNhbHQpDQppZiBjYWxjdWxhdGVkSGFzaC5oZXhkaWdlc3QoKSAhPSBoYXNoOg0KDQoJSW52YWxpZA0K */
+  }
+  
+  ul:nth-of-type(1) {
+    list-style-type: square;
+  }
+  
+  
+  .button {
+  display: inline-block;
+  width: 115px;
+  height: 45px;
+  background: #4E9CAF;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  left: 45%;
+  font-weight: bold;
+  }
+  
