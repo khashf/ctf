@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cyber Challenge 2018</title>
+<link rel="stylesheet" media="screen" href="/assets/application-c576db4077e56c92d2e72248af4ac42dbab8e11a1447ee990e3f423c1f1c9d88.css" />
+
+<script src="/assets/application-cc9edd1bbaead9ba4863afbe68c4aa226209d4fe775ded3ed076e5afaef40994.js"></script>
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="qPnBavcGLtqQfF0IQ+UPWadu9THJ9m/IqUS4R5G/HjYhHBG5YHZHpF85iMw6BDndgf2r8oBMELFvkaOWF8WWDA==" />
+</head>
+<body>
+<div class='navbar navbar-fixed-top navbar-inverse'>
+<div class='navbar-inner'>
+<div class='container'>
+<a class='btn btn-navbar' data-target='.nav-collapse' data-toggle='collapse'>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+</a>
+<a class='brand' href='/'>MITRE CTF</a>
+<div class='nav-collapse collapse'>
+<ul class='nav'>
+<li class=''>
+<a href='/game'>Gameboard</a>
+</li>
+<li class=''>
+<a href='/game/messages'>
+Messages
+<span class='badge badge-important'></span>
+</a>
+</li>
+<li class=''>
+<a href='/game/achievements'>Achievements</a>
+</li>
+<li class=''>
+<a href='/game/summary'>Summary</a>
+</li>
+<li>
+<a href='http://mitrecyberacademy.org/contact' target='_blank'>
+Contact
+</a>
+</li>
+</ul>
+<ul class='nav pull-right'>
+<li class='dropdown'>
+<a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+Log in / Register
+<b class='caret'></b>
+</a>
+<ul class='dropdown-menu'>
+<li>
+<a href="/users/login">Log in</a>
+</li>
+<li class='divider'></li>
+<li>
+<a href="/users/new">Register</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<header class='jumbotron masthead remove_top_padding' id='subpage'>
+<div class='container'>
+<h1>
+Access Your Account
+
+<div class='pull-right' id='clock'>
+<h4>
+<div id='time_remaining'></div>
+</h4>
+</div>
+<script>
+  (function() {
+    var clock, countdown, updateClock;
+  
+    countdown = function(endTime) {
+      var days, diff, hours, minutes, seconds;
+      diff = endTime - new Date();
+      if (diff < 0) {
+        diff = 0;
+      }
+      days = Math.floor(diff / 1000 / 60 / 60 / 24);
+      diff -= days * 1000 * 60 * 60 * 24;
+      hours = Math.floor(diff / 1000 / 60 / 60);
+      diff -= hours * 1000 * 60 * 60;
+      minutes = Math.floor(diff / 1000 / 60);
+      diff -= minutes * 1000 * 60;
+      seconds = Math.floor(diff / 1000);
+      return {
+        "days": days,
+        "hours": hours,
+        "minutes": minutes,
+        "seconds": seconds
+      };
+    };
+  
+    updateClock = function(clock_elem) {
+      var t;
+      t = countdown(new Date(1524337200000.0));
+      clock_elem.innerHTML = 'Time Remaining: ' + t.days + 'd ' + t.hours + 'h ' + t.minutes + 'm ' + t.seconds + 's';
+      if (t.total <= 0) {
+        clearInterval(timeinterval);
+      }
+    };
+  
+    clock = document.getElementById('time_remaining');
+  
+    updateClock(clock);
+  
+    setInterval(updateClock, 1000, clock);
+  
+  }).call(this);
+</script>
+
+</h1>
+<p>
+
+</p>
+</div>
+</header>
+<div class='colored-divider'></div>
+<div class='container'>
+<div class='alert alert-success'>
+<a class='close' data-dismiss='alert' href='#'>×</a>
+You must login in order to perform this action.
+</div>
+</div>
+<div class='container'>
+<legend>Login</legend>
+<form class="form-horizontal" id="new_user" action="/users/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="Ok9iHVWh9o+I8ATupZXcn8umC3Tal3Gr3LhlxLUiw1yzqrLOwtGf8Ue10SrcdOob7TVVt5MtDtIabX4VM1hLZg==" /><div class='control-group'>
+<label class="control-label" for="user_email">Email</label>
+<div class='controls'>
+<input tabindex="1" type="email" value="" name="user[email]" id="user_email" />
+<a class="space-text-from-input" href="/users/new">Register a new user</a>
+
+</div>
+</div>
+<div class='control-group'>
+<label class="control-label" for="user_password">Password</label>
+<div class='controls'>
+<input tabindex="2" type="password" name="user[password]" id="user_password" />
+<a class="space-text-from-input" href="/users/password/new">Reset your password</a>
+
+</div>
+</div>
+<div class='control-group'>
+<div class='controls'>
+<label class="checkbox" for="user_remember_me"><input name="user[remember_me]" type="hidden" value="0" /><input class="checkbox" type="checkbox" value="1" name="user[remember_me]" id="user_remember_me" />
+Remember me
+</label></div>
+</div>
+<div class='controls'>
+<button name="button" type="submit" class="btn" tabindex="3">Submit</button>
+</div>
+<br>
+<div class='controls'>
+<a href="/users/confirm/new">Resend confirmation email</a>
+
+</div>
+</form>
+</div>
+</body>
+<footer class='well footer' id='page-footer'>
+<div class='container'>
+<div class='row-fluid'>
+<p class='pull-right'>
+<a href='#'>Back to top</a>
+</p>
+<p>
+<a href='http://www.mitre.org'>MITRE</a>
+Cyber Academy
+|
+<a href='http://mitrecyberacademy.org/terms-of-service'>Terms of Service</a>
+</p>
+<p>
+Copyright &copy
+2018
+The MITRE Corporation
+</p>
+</div>
+</div>
+</footer>
+</html>
